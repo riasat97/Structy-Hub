@@ -1,21 +1,13 @@
 from collections import Counter
 def intersection_with_dupes(a, b):
-    counts = {}
-    
-    # 1. Build the dictionary from B this time
-    for item in b:
-        counts[item] = counts.get(item, 0) + 1
-    
-    res = []
-    
-    # 2. Now iterate through A to check against B's counts
-    for item in a:
-        if counts.get(item, 0) > 0:
-            res.append(item)
-            counts[item] -= 1 # Decrease count so we don't over-match duplicates
-            
-    return res
- 
+  counter_a= Counter(a)
+  counter_b= Counter(b)
+  res= []
+  for ele in counter_a:
+    for i in range(0, min(counter_a[ele],counter_b[ele])):
+      res.append(ele)
+  return res
+  pass # todo
 
 # intersection_with_dupes(
 #   ["a", "b", "c", "b"], 
