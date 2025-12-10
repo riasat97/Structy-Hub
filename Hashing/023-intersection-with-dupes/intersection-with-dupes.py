@@ -1,15 +1,18 @@
-from collections import Counter
 def intersection_with_dupes(a, b):
-  counter_a= Counter(a)
-  counter_b= Counter(b)
-  res= []
-  for ele in counter_a:
-    for i in range(0, min(counter_a[ele],counter_b[ele])):
-      res.append(ele)
-  return res
-  pass # todo
-
-# intersection_with_dupes(
-#   ["a", "b", "c", "b"], 
-#   ["x", "y", "b", "b"]
-# ) # -> ["b", "b"]
+    # Optimization: ensure 'a' is the smaller list to save memory on the dictionary
+    if len(a) > len(b):
+        a, b = b, a
+        
+    counts = {}
+    # Count frequency of the first list
+    for item in a:
+        counts[item] = counts.get(item, 0) + 1
+    
+    res = []
+    # Check second list against the counts
+    for item in b:
+        if counts.get(item, 0) > 0:
+            res.append(item)
+            counts[item] -= 1 # Decrement to ensure we handle duplicates correctly
+            
+    return res
