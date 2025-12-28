@@ -4,26 +4,37 @@ class Node:
     self.left = None
     self.right = None
 
+
+# def depth_first_values(root):
+#   if not root:
+#     return []
+#   stack= [root]
+#   values= []
+#   while stack:
+#     current= stack.pop()
+#     values.append(current.val)
+#     if current.right:
+#       stack.append(current.right)
+#     if current.left:
+#       stack.append(current.left)
+#   return values
+
+
 def depth_first_values(root):
   if not root:
     return []
-  stack= [root]
-  values= []
-  while stack:
-    current= stack.pop()
-    values.append(current.val)
-    if current.right:
-      stack.append(current.right)
-    if current.left:
-      stack.append(current.left)
-  return values
+
+  left_values = depth_first_values(root.left)
+  right_values = depth_first_values(root.right)
+  return [root.val, *left_values, *right_values]
+
 
 # a = Node('a')
 # b = Node('b')
 # c = Node('c')
 # d = Node('d')
 # e = Node('e')
-# f = Node('f')        
+# f = Node('f')
 # a.left = b
 # a.right = c
 # b.left = d
