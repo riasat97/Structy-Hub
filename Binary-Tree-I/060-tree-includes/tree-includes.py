@@ -4,20 +4,29 @@ class Node:
     self.val = val
     self.left = None
     self.right = None
+# BFS iterative
+# def tree_includes(root, target):
+#   if not root:
+#     return False
+#   queue= deque([root])
+#   while queue:
+#     current= queue.popleft()
+#     if current.val == target:
+#       return True
+#     if current.left:
+#       queue.append(current.left)
+#     if current.right:
+#         queue.append(current.right)
+#   return False
 
+# DFS recursive
 def tree_includes(root, target):
   if not root:
     return False
-  queue= deque([root])
-  while queue:
-    current= queue.popleft()
-    if current.val == target:
-      return True
-    if current.left:
-      queue.append(current.left)
-    if current.right:
-        queue.append(current.right)
-  return False
+  if root.val == target:
+    return True
+  return tree_includes(root.left,target) or tree_includes(root.right,target)
+
 
 # a = Node("a")
 # b = Node("b")
