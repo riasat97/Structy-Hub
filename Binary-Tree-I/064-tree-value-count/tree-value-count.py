@@ -19,18 +19,29 @@ from collections import deque
 #     if current.right:
 #       stack.append(current.right)
 #   return value_count
-# bfs iterative 
+# # bfs iterative 
+# def tree_value_count(root, target):
+#   if not root:
+#     return 0
+#   value_count=0  
+#   queue= deque([root])
+#   while queue:
+#     current= queue.popleft()
+#     if current.val == target:
+#       value_count+=1
+#     if current.left:
+#       queue.append(current.left)
+#     if current.right:
+#       queue.append(current.right)
+#   return value_count  
+
+#dfs recursive
 def tree_value_count(root, target):
   if not root:
     return 0
-  value_count=0  
-  queue= deque([root])
-  while queue:
-    current= queue.popleft()
-    if current.val == target:
-      value_count+=1
-    if current.left:
-      queue.append(current.left)
-    if current.right:
-      queue.append(current.right)
-  return value_count  
+  match= 1 if root.val== target else 0  
+  left_count= tree_value_count(root.left,target)
+  right_count= tree_value_count(root.right,target)
+  return match+ left_count + right_count
+  
+
