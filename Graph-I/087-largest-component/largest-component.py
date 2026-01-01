@@ -1,3 +1,4 @@
+from collections import deque
 def largest_component(graph):
   largest=0
   visited=set()
@@ -7,11 +8,29 @@ def largest_component(graph):
       largest=res
   return largest
 
-def explore(graph,current,visited):
-  if current in visited:
+# def explore(graph,current,visited):
+#   if current in visited:
+#     return 0
+#   visited.add(current)
+#   size=1
+#   for neighbour in graph[current]:
+#     size+=explore(graph,neighbour,visited)
+#   return size
+
+def explore(graph, src, visited):
+  if src in visited:
     return 0
-  visited.add(current)
-  size=1
-  for neighbour in graph[current]:
-    size+=explore(graph,neighbour,visited)
+  visited.add(src)  
+  queue= deque([src])
+  size=0
+  while queue:
+    current= queue.popleft()
+    size+=1 # cause need to count src node
+    for neighbour in graph[current]:
+      if neighbour not in visited:
+        visited.add(neighbour)
+        queue.append(neighbour)
   return size
+
+
+  
