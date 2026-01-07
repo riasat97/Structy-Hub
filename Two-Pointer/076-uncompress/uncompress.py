@@ -1,6 +1,6 @@
 def uncompress(s):
   nums="0123456789"
-  res=''
+  res=[]
   i=0
   j=0
   while j<len(s):
@@ -9,9 +9,9 @@ def uncompress(s):
     else:
       num= int(s[i:j])
       if num ==1:
-        res+=s[j]
+        res.append(s[j])
       else:  
-       res+= s[j]*num
+       res.append(s[j]*num)
       j+=1
       i=j
-  return res
+  return ''.join(res)
