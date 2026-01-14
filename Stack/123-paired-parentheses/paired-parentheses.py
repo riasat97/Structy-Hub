@@ -14,7 +14,7 @@ def paired_parentheses(string):
   stack=[]
   dic={"(":")"}
   for ch in string:
-    if ch=="(":
+    if ch in dic:
       stack.append(dic[ch])
     elif ch==")":
       if stack and stack[-1]==")":
