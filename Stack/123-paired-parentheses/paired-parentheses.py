@@ -12,10 +12,10 @@
 
 def paired_parentheses(string):
   stack=[]
-  dic={"(":")"}
+ # dic={"(":")"}
   for ch in string:
-    if ch in dic:
-      stack.append(dic[ch])
+    if ch=="(":
+      stack.append(")")
     elif ch==")":
       if stack and stack[-1]==")":
         stack.pop()
