@@ -1,16 +1,15 @@
 def most_frequent_char(s):
-  count_char={}
-  for char in s:
-    if char not in count_char:
-     count_char[char]=0
-    count_char[char]+=1
-  max=s[0]
-  for char in count_char:
-    if count_char[char]> count_char[max]:
-      max= char
-  return max
-  pass # todo
-
+  char_freq={}
+  for ch in s:
+    # if ch not in char_freq:
+    #   char_freq[ch]=0
+    # char_freq[ch]+=1
+    char_freq[ch]=char_freq.get(ch,0)+1
+  max=None
+  for ch in s:
+    if max is None or char_freq[ch]>char_freq[max]:
+      max=ch
+  return max    
 
 #   | Structure | Lookup | Insert | Delete | Ordered? | Duplicates |
 # | --------- | ------ | ------ | ------ | -------- | ---------- |
