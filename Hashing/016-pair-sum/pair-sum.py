@@ -11,19 +11,28 @@
 #     if complement in previous:
 #       return (previous[complement], i)
 #     previous[numbers[i]] = i
-def pair_sum(numbers, target_sum):
-  previous={}
-  for index,num in enumerate(numbers):
-    complement= target_sum - num
-    if complement in previous:
-      return (previous[complement],index)
-    previous[num]=index
+# def pair_sum(numbers, target_sum):
+#   previous={}
+#   for index,num in enumerate(numbers):
+#     complement= target_sum - num
+#     if complement in previous:
+#       return (previous[complement],index)
+#     previous[num]=index
 
 # “For each number, I calculate the complement needed to reach the target and check if it has already been seen using a hash map; if so, I return their indices.”
 
 # n = length of numbers list
 # Time: O(n)
 # Space: O(n)
-    
+
+def pair_sum(numbers, target_sum):
+  seen={}
+  for index,num in enumerate(numbers):
+    complement= target_sum-num
+    if complement in seen:
+      return (seen[complement],index)
+    seen[num]=index
+
+
     
     
