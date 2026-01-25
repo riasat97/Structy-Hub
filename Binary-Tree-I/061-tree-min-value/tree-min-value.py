@@ -31,27 +31,32 @@ class Node:
 #       queue.append(current.left)
 #   return min
 # dfs recursive
-def tree_min_value(root):
+# def tree_min_value(root):
+#   if not root:
+#     return float('inf')
+#   return min(root.val, tree_min_value(root.left), tree_min_value(root.right))  
+  
+# a = Node(3)
+# b = Node(11)
+# c = Node(4)
+# d = Node(4)
+# e = Node(-2)
+# f = Node(1)
+
+# a.left = b
+# a.right = c
+# b.left = d
+# b.right = e
+# c.right = f
+
+# #       3
+# #    /    \
+# #   11     4
+# #  / \      \
+# # 4   -2     1
+# print(tree_min_value(a)) # -> -2  
+
+def tree_min_values(root):
   if not root:
     return float('inf')
-  return min(root.val, tree_min_value(root.left), tree_min_value(root.right))  
-  
-a = Node(3)
-b = Node(11)
-c = Node(4)
-d = Node(4)
-e = Node(-2)
-f = Node(1)
-
-a.left = b
-a.right = c
-b.left = d
-b.right = e
-c.right = f
-
-#       3
-#    /    \
-#   11     4
-#  / \      \
-# 4   -2     1
-print(tree_min_value(a)) # -> -2  
+  return min(root.val, tree_min_values(root.left), tree_min_values(root.right))  
