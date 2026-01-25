@@ -1,9 +1,13 @@
 from collections import deque
+
+
 class Node:
   def __init__(self, val):
     self.val = val
     self.left = None
     self.right = None
+
+
 # BFS iterative
 # def tree_includes(root, target):
 #   if not root:
@@ -19,13 +23,14 @@ class Node:
 #         queue.append(current.right)
 #   return False
 
+
 # DFS recursive
-def tree_includes(root, target):
-  if not root:
-    return False
-  if root.val == target:
-    return True
-  return tree_includes(root.left,target) or tree_includes(root.right,target)
+# def tree_includes(root, target):
+#   if not root:
+#     return False
+#   if root.val == target:
+#     return True
+#   return tree_includes(root.left, target) or tree_includes(root.right, target)
 
 
 # a = Node("a")
@@ -48,4 +53,10 @@ def tree_includes(root, target):
 # # d   e     f
 
 # print(tree_includes(a, "e")) # -> True
-  
+
+def tree_includes(root, target):
+  if not root:
+    return False
+  if target==root.val:
+    return True
+  return tree_includes(root.left, target) or tree_includes(root.right, target)
