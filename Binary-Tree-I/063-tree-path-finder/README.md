@@ -139,7 +139,7 @@ path_finder(None, "x") # -> None
 ```python
 root = Node(0)
 curr = root
-for i in range(1, 4000):
+for i in range(1, 32000):
   curr.right = Node(i)
   curr = curr.right
 
@@ -148,14 +148,12 @@ for i in range(1, 4000):
 #        1
 #         \
 #          2
-#           \
-#            3
+#           .
+#            .
 #             .
-#              .
-#               .
-#              3998
-#                \
-#                3999
+#            31999
+#              \
+#              32000
 
-path_finder(root, 90) # -> [0, 1, 2, 3, ..., 89, 90]
+path_finder(root, 30000) # -> [0, 1, 2, ..., 29999, 30000]
 ```

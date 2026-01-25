@@ -18,28 +18,28 @@
 #   return None
 
 # depth first w/ append
-def path_finder(root, target):
-  result = _path_finder(root, target)
-  if result is None:
-    return None
-  else:
-    return result[::-1]
+# def path_finder(root, target):
+#   result = _path_finder(root, target)
+#   if result is None:
+#     return None
+#   else:
+#     return result[::-1]
 
 
-def _path_finder(root, target):
-  if not root:
-    return None
-  if root.val == target:
-    return [root.val]
-  left_path = _path_finder(root.left, target)
-  if left_path:
-    left_path.append(root.val)
-    return left_path
-  right_path = _path_finder(root.right, target)
-  if right_path:
-    right_path.append(root.val)
-    return right_path
-  return None
+# def _path_finder(root, target):
+#   if not root:
+#     return None
+#   if root.val == target:
+#     return [root.val]
+#   left_path = _path_finder(root.left, target)
+#   if left_path:
+#     left_path.append(root.val)
+#     return left_path
+#   right_path = _path_finder(root.right, target)
+#   if right_path:
+#     right_path.append(root.val)
+#     return right_path
+#   return None
 
 
 # Here is the step-by-step breakdown for path_finder(a, 'e').
@@ -143,3 +143,23 @@ def _path_finder(root, target):
 # Middle (Node b): "My child 'e' found it. I will put myself at the front: ['b', 'e']"
 
 # Top (Node a): "My child 'b' found it. I will put myself at the front: ['a', 'b', 'e']"
+
+def path_finder(root, target):
+  res= _path_finder(root,target)
+  if res:
+   return res[::-1]
+  return None
+def _path_finder(root, target):
+  if not root:
+    return None
+  if root.val==target:
+    return [root.val]
+  left_path=_path_finder(root.left,target)
+  if left_path:
+    left_path.append(root.val)
+    return left_path
+  right_path=_path_finder(root.right,target)
+  if right_path:
+    right_path.append(root.val)
+    return right_path
+  return None
