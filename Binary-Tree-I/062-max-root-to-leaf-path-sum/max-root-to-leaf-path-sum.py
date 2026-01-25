@@ -4,15 +4,17 @@ class Node:
     self.left = None
     self.right = None
 
-def max_path_sum(root):
-  if not root:
-    return float("-inf")
-  if not root.left and not root.right:
-    return root.val
-  max_left= max_path_sum(root.left)
-  max_right= max_path_sum(root.right)
-  return root.val+ max(max_left, max_right)
+# def max_path_sum(root):
+#   if not root:
+#     return float("-inf")
+#   if not root.left and not root.right:
+#     return root.val
+#   max_left= max_path_sum(root.left)
+#   max_right= max_path_sum(root.right)
+#   return root.val+ max(max_left, max_right)
 
+
+#for each subtree add myself(root) to the bigger of my children value.
 
 
 
@@ -135,3 +137,12 @@ def max_path_sum(root):
 # Node c (4): Choose -inf vs 1? Chooses 1. Adds self (4). Returns 5.
 
 # Node a (3): Choose 15 vs 5? Chooses 15. Adds self (3). Returns 18.
+
+def max_path_sum(root):
+  if not root:
+    return float('-inf')
+  if not root.left and not root.right:
+    return root.val
+  return root.val+ max(max_path_sum(root.left),max_path_sum(root.right))
+  
+  
