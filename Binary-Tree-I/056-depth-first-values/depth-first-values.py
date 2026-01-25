@@ -87,18 +87,34 @@ class Node:
 #   right_values= depth_first_values(root.right)
 #   return [root.val,*left_values, *right_values]
 
-def depth_first_values(root):
-  values=[]
+    def depth_first_values(root):
+      """
+      Returns a list of values from the binary tree
+      using Depth-First Search (Preorder: Root → Left → Right)
+      """
+      result = []  # This list will store all node values
+  
+      def dfs(node):
+          # BASE CASE:
+          # If the current node does not exist, stop recursion
+          if not node:
+              return
+  
+          # STEP 1: Visit the current node (Preorder)
+          result.append(node.val)
+  
+          # STEP 2: Traverse the left subtree
+          dfs(node.left)
+  
+          # STEP 3: Traverse the right subtree
+          dfs(node.right)
+  
+      # Start DFS from the root
+      dfs(root)
+  
+      # After traversal, result contains all values
+      return result
 
-  def dfs(node):
-    if not node:
-      return
-    values.append(node.val)
-    dfs(node.left)
-    dfs(node.right)
-    
-  dfs(root)
-  return values
 
   
 
