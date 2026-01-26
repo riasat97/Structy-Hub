@@ -31,18 +31,21 @@ from collections import deque
 # print(has_path(graph, 'f', 'k')) # True
 
 
-
-
+# def has_path(graph, src, dst):
+#   if src==dst:
+#     return True
+#   for neighbour in graph[src]:
+#     if has_path(graph,neighbour,dst)==True:
+#       return True
+#   return False
 
 
 def has_path(graph, src, dst):
-  if src==dst:
-    return True
-  for neighbour in graph[src]:
-    has_path(graph,neighbour,dst)==True:
+  queue=deque([src])
+  while queue:
+    current= queue.popleft()
+    if current == dst:
       return True
-  return False
-
-
-
+    for neighbour in graph[current]:
+      queue.append(neighbour)
   
