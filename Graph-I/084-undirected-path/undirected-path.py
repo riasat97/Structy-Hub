@@ -52,17 +52,29 @@ from collections import deque
 
 def undirected_path(edges, node_A, node_B):
   graph=build_graph(edges)
-  return has_path(graph,graph,des,set())
+  return has_path(graph,node_A,node_B,set())
 
+# def has_path(graph,src,des,visited):
+#   if src==des:
+#     return True
+#   if src in visited:
+#     return False
+#   visited.add(src)
+#   for neighbour in graph[src]:
+#     if has_path(graph,neighbour,des,visited)==True:
+#       return True
+#   return False
 def has_path(graph,src,des,visited):
-  if src==des:
-    return True
-  if src in visited:
-    return False
   visited.add(src)
-  for neighbour in graph[src]:
-    if has_path(graph,neighbour,des,visited)==True:
+  queue=deque([src])
+  while queue:
+    current= queue.popleft()
+    if current==des:
       return True
+    for neighbour in graph[current]:
+      if neighbour not visited:
+        visited.add(neighbour)
+        queue.append(neighbour)
   return False
 
 def build_graph(edges):
