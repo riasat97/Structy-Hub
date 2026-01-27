@@ -36,10 +36,22 @@ def connected_components_count(graph):
       count+=1
   return count
 
+# def explore(graph,current,visited):
+#   if current in visited:
+#     return False
+#   visited.add(current)
+#   for neighbour in graph[current]:
+#     explore(graph,neighbour,visited)
+#   return True
 def explore(graph,current,visited):
   if current in visited:
     return False
   visited.add(current)
-  for neighbour in graph[current]:
-    explore(graph,neighbour,visited)
+  queue=deque([current])
+  while queue:
+    node=queue.popleft()
+    for neighbour in graph[node]:
+      if neighbour not in visited:
+        visited.add(neighbour)
+        queue.append(neighbour)
   return True
