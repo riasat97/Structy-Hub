@@ -1,19 +1,54 @@
 from collections import deque
-def shortest_path(edges, node_A, node_B):
-  graph= build_graph(edges)
-  visited= set([node_A])
-  queue= deque([(node_A,0)])
+# def shortest_path(edges, node_A, node_B):
+#   graph= build_graph(edges)
+#   visited= set([node_A])
+#   queue= deque([(node_A,0)])
   
-  while queue:
-    node,distance= queue.popleft()
-    if node==node_B:
-      return distance
+#   while queue:
+#     node,distance= queue.popleft()
+#     if node==node_B:
+#       return distance
     
+#     for neighbour in graph[node]:
+#       if neighbour not in visited:
+#        visited.add(neighbour) 
+#        queue.append((neighbour,distance+1))
+#   return -1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def shortest_path(edges, node_A, node_B):
+  graph=build_graph(edges)
+  visited=set(node_A)
+  queue=deque([(node_A,0)])
+  while queue:
+    node,length= queue.popleft()
+    if node==node_B:
+      return length
     for neighbour in graph[node]:
       if neighbour not in visited:
-       visited.add(neighbour) 
-       queue.append((neighbour,distance+1))
+        visited.add(neighbour)
+        queue.append((neighbour,length+1))
   return -1
+
+
+
+
+  
 def build_graph(edges):
   graph={}
   for edge in edges:
