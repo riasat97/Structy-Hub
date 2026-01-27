@@ -56,15 +56,29 @@ def largest_component(graph):
       largest=size
   return largest
 
+# def explore(graph,node,visited):
+#   if node in visited:
+#     return 0
+#   visited.add(node)
+#   size=1
+#   for neighbour in graph[node]:
+#     size+=explore(graph,neighbour,visited)
+#   return size
 def explore(graph,node,visited):
   if node in visited:
     return 0
   visited.add(node)
   size=1
-  for neighbour in graph[node]:
-    size+=explore(graph,neighbour,visited)
+  queue=deque([node])
+  while queue:
+    current= queue.popleft()
+    for neighbour in graph[current]:
+      if neighbour not in visited:
+        size+=1
+        visited.add(neighbour)
+        queue.append(neighbour)
   return size
-    
+  
 
 
 
