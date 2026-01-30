@@ -1,29 +1,28 @@
 from collections import deque
-def merge_sort(nums):
-  if len(nums)<=1:
-    return nums
-  mid= len(nums)//2
-  left_sorted= merge_sort(nums[:mid])
-  right_sorted= merge_sort(nums[mid:])
-  return merge(left_sorted,right_sorted)
+# def merge_sort(nums):
+#   if len(nums)<=1:
+#     return nums
+#   mid= len(nums)//2
+#   left_sorted= merge_sort(nums[:mid])
+#   right_sorted= merge_sort(nums[mid:])
+#   return merge(left_sorted,right_sorted)
   
-def merge(list_1,list_2):
-  merge=[]
-  list_1= deque(list_1)
-  list_2= deque(list_2)
-  while list_1 and list_2:
-    if list_1[0]<list_2[0]:
-      merge.append(list_1.popleft())
-    else:
-      merge.append(list_2.popleft())
-  merge+=list_1
-  merge+=list_2
-  return merge
-  
+# def merge(list_1,list_2):
+#   merge=[]
+#   list_1= deque(list_1)
+#   list_2= deque(list_2)
+#   while list_1 and list_2:
+#     if list_1[0]<list_2[0]:
+#       merge.append(list_1.popleft())
+#     else:
+#       merge.append(list_2.popleft())
+#   merge+=list_1
+#   merge+=list_2
+#   return merge
 
-
-
-
+# n = list size
+# Time: O(nlogn)
+# Space: O(n)
 
 # “Merge Sort divides the list into halves log n times, and at each level it merges all n elements, so the time complexity is O(n log n).”
 # “Merge Sort needs extra memory to store merged arrays, so its space complexity is O(n).”
@@ -438,4 +437,28 @@ def merge(list_1,list_2):
 # then merges while returning back up.
 
 # If this version made sense, you’ve officially understood recursion + merge sort 🎉
+
+def merge_sort(nums):
+  if len(nums)<=1:
+    return nums
+  mid= len(nums)//2
+  left_sorted= merge_sort(nums[:mid])
+  right_sorted= merge_sort(nums[mid:])
+  return merge(left_sorted,right_sorted)
+
+def merge(left,right):
+  merge=[]
+  left_list= deque(left)
+  right_list= deque(right)
+  while left_list and right_list:
+    if left_list[0]<right_list[0]:
+      merge.append(left_list.popleft())
+    else:
+      merge.append(right_list.popleft())
+  merge+=left_list
+  merge+=right_list
+  return merge
+
+      
+
   
